@@ -1,0 +1,19 @@
+
+// preset form values if we receive a userdata object //
+- user = typeof(udata) != 'undefined' ? udata : { }
+// store the userId on the client side in a hidden input field //
+input(type='hidden', value= user._id)#userId
+
+#booking-form-container.center
+	ul#booking-form-container.layour-row.horizontal
+		each weekday in weekdays
+			div.booking-card(class=weekday['today'] ? 'booking-card-today' : '')
+				.booking-frame
+					h5= weekday['date']
+					each bookingtime in weekday['booking']
+						.row
+							button.booking-button(class=bookingtime['booked'] ? (bookingtime['disable'] ?'booking-button-disabled' : 'booking-button-booked') : '' onclick=`bookTime(${bookingtime['id']});`)= bookingtime['time']
+
+// display form errors in a custom modal window //
+
+include ../modals/form-errors

@@ -1,0 +1,24 @@
+extends layout
+
+block header 
+	nav.navbar.navbar-expand.navbar-light.bg-light
+			.nav-item
+				.navbar-brand Vakka Booking
+			.navbar-nav.ml-auto
+				.nav-item
+					label 
+				.nav-item
+					a.nav-link(href='/home').active Booking
+				.nav-item
+					a.nav-link(href='/account') Account
+				.nav-item
+					button.btn.navbar-btn.btn-outline-dark#btn-logout Sign Out
+block content
+	include view/booking
+	include modals/alert
+	include modals/confirm
+
+block scripts
+	script(src='/js/views/home.js')
+	script(src='/js/controllers/homeController.js')
+	script(src='/js/form-validators/accountValidator.js')
